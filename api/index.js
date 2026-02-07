@@ -23,6 +23,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    ok: true,
+    service: "lab-backend",
+    routes: ["POST /api/contact"],
+  });
+});
+
 // Serve static files from the public directory
 app.use('/assets', express.static(path.join(__dirname, '..', 'public', 'assets'), {
   setHeaders: (res, path) => {
